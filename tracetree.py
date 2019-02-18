@@ -15,7 +15,7 @@ class TraceTree:
     def to_s(self):
         if self.root is None:
             return "<empty>"
-        return self.root.to_s("", [], 0, True, False)
+        return self.root.to_s("", [], -1, True, False)
 
 def ttt(branches, depth, only_sibling):
     # Branches are the points at which there is an "open"
@@ -64,12 +64,13 @@ class TraceTreeNode:
     def hits(self):
         return self.hits
     def to_s(self, acc, branches, depth, only_sibling, last_sibling):
-        x = ttt(branches, depth, only_sibling) + str(self.obj)
-        acc += x
-        if len(self.children) == 0:
-            acc += " (#%d hits)\n" % self.hits
-            return acc
-        acc += "\n"
+        if depth >= 0:
+            x = ttt(branches, depth, only_sibling) + str(self.obj)
+            acc += x
+            if len(self.children) == 0:
+                acc += " (#%d hits)\n" % self.hits
+                return acc
+            acc += "\n"
         if last_sibling:
             branches.pop()
         # Each lower level should have us as a branching point,
