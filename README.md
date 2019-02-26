@@ -21,7 +21,7 @@ A
 
 The paths are presented in order of first appearence.
 
-This command is useful to get a sense of how a piece of code is used in a large code base; simply do `caltrace-point <breakpoint spec>`, let the program run and read the calltraces to understand how the program point is reached in the execution scenario you care about.
+This command is useful to get a sense of how a piece of code is used in a large code base; simply do `calltrace-point <breakpoint spec>`, let the program run and read the calltraces to understand how the program point is reached in the execution scenario you care about.
 
 ## License information
 
