@@ -17,7 +17,7 @@ class TraceTree:
             return "<empty>"
         return self.root.to_s("", [], -1, True, False)
 
-def ttt(branches, depth, only_sibling):
+def print_node(branches, depth, only_sibling):
     # Branches are the points at which there is an "open"
     # branching point, i.e. the points where we need to
     # print out a '|' symbol
@@ -65,7 +65,7 @@ class TraceTreeNode:
         return self.hits
     def to_s(self, acc, branches, depth, only_sibling, last_sibling):
         if depth >= 0:
-            x = ttt(branches, depth, only_sibling) + str(self.obj)
+            x = print_node(branches, depth, only_sibling) + str(self.obj)
             acc += x
             if len(self.children) == 0:
                 acc += " (#%d hits)\n" % self.hits
