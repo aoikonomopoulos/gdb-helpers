@@ -44,6 +44,11 @@ def exit_handler(bp, event):
     bp.reset()
 
 class CalltracePointCommand(gdb.Command):
+    """collect calltraces at program point
+
+    Prints out a tree of the calltraces captured at the specified program
+    point, when execution ends.
+    """
     def __init__(self):
         super(CalltracePointCommand, self).__init__("calltrace-point", gdb.COMMAND_OBSCURE, gdb.COMPLETE_LOCATION)
     def invoke(self, arg, from_tty):
